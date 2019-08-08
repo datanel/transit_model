@@ -74,12 +74,6 @@ target/release/gtfs2ntfs -h
 target/release/gtfs2ntfs -i path/to/input/directory -c path/to/config.json -p PREFIX -o path/to/output/directory
 ```
 
-### With docker
-
-```bash
-docker run --rm -v path/to/input:/app/input -v path/to/output:/app/output navitia/transit_model gtfs2ntfs -i /app/input -o /app/output -c /app/input/config.json -p PREFIX
-```
-
 ## Tests
 
 ```bash
@@ -94,24 +88,6 @@ From the standard, some of the functionalities are not fully supported:
 - No support for all periodic description (files `grid_calendars.txt`,
   `grid_exception_dates.txt`, `grid_periods.txt` and `grid_rel_calendar_line.txt`)
 - No support for Line Groups (files `line_groups.txt` and `line_group_links.txt`)
-
-## FAQ
-**I'm having the following error when building the Docker image from
-`Dockerfile`**
-```
-$> docker build --tag navitia_model:deb-proj --file Dockerfile .
-...
- ---> Running in 74d8af8aa077
- gpg: directory '/root/.gnupg' created
- gpg: keybox '/root/.gnupg/pubring.kbx' created
- gpg: keyserver receive failed: Cannot assign requested address
- The command '/bin/sh -c gpg2 --receive-keys ${GPG_KEY}' returned a non-zero
- code: 2
-```
-
-It seems that `gpg2` sometimes fails to find a public key from key server.
-Launch the `docker build` command again, the build should succeed eventually. If
-not, please fill an issue.
 
 ## License
 
