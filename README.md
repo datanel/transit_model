@@ -6,8 +6,9 @@ section [NTFS: Level of Support](#ntfs-level-of-support) for more details about 
 level of support of the NTFS standard.
 
 This repository also provides :
-- (incomplete) [GTFS](http://gtfs.org/) to [NTFS](https://github.com/CanalTP/ntfs-specification/blob/master/ntfs_fr.md) and (soon) NTFS to GTFS conversion.
-- (incomplete) Generation of transfers.
+- [GTFS](http://gtfs.org/) to [NTFS](https://github.com/CanalTP/ntfs-specification/blob/master/ntfs_fr.md)
+- NTFS to GTFS conversion.
+- Generation of transfers.
 .
 - Merge [NTFS] (https://github.com/CanalTP/ntfs-specification/blob/master/ntfs_fr.md).
 
@@ -34,7 +35,7 @@ apt install -y clang libssl-dev
 cargo build --features=proj
 ```
 
-Now, you should be able to use the converter `kv12ntfs`. Enjoy!
+Now, you should be able to use the `kv1` module. Enjoy!
 
 ### Using PROJ
 If you want to use [PROJ](https://proj.org/) in your code, you can if you
