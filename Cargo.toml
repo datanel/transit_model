@@ -11,6 +11,15 @@ edition = "2018"
 [badges]
 travis-ci = { repository = "CanalTP/transit_model" }
 
+[workspace]
+members = [
+    ".",
+    "./libs/collection",
+    "./libs/relations",
+    "./libs/transit_model_procmacro",
+    "./libs/model-builder"
+]
+
 [dependencies]
 chrono = "0.4"
 csv = "1.0"
@@ -32,12 +41,12 @@ serde_json = "1"
 structopt = "0.3"
 tempfile = "3"
 time-parse = "0.1"
-transit_model_procmacro = { version = "0.1", path = "./transit_model_procmacro" }
+transit_model_procmacro = { version = "0.1", path = "./libs/transit_model_procmacro" }
 walkdir = "2.1"
 wkt = "0.5"
 zip = "0.5"
-transit_model_collection = { path = "./collection" }
-transit_model_relations = { path = "./relations" }
+transit_model_collection = { path = "./libs/collection" }
+transit_model_relations = { path = "./libs/relations" }
 
 [[test]]
 name = "kv12ntfs"
