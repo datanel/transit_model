@@ -35,7 +35,7 @@ use transit_model_collection::CollectionWithId;
 fn load_stop_area(stop_place_elem: &Element, proj: &Proj) -> Result<StopArea> {
     let id: String = stop_place_elem.try_attribute("id")?;
     let coord: Coord = load_coords(stop_place_elem)
-        .and_then(|coords| proj.convert((coords.0, coords.1).into()))
+        .and_then(|coords| proj.convert(coords.into()))
         .map(Coord::from)
         .unwrap_or_else(|e| {
             warn!("unable to parse coordinates of stop place {}: {}", id, e);
