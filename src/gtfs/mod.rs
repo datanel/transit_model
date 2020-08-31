@@ -29,7 +29,7 @@ use crate::{
 use derivative::Derivative;
 use log::info;
 use serde::{Deserialize, Serialize};
-use std::{collections::BTreeMap, fmt, path::Path};
+use std::{collections::BTreeMap, fmt, fs::File, path::Path};
 use typed_index_collection::{CollectionWithId, Idx};
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
@@ -270,7 +270,8 @@ pub struct Configuration {
     pub on_demand_transport_comment: Option<String>,
 }
 
-fn read<H>(file_handler: &mut H, configuration: Configuration) -> Result<Model>
+///
+pub fn read<H>(file_handler: &mut H, configuration: Configuration) -> Result<Model>
 where
     for<'a> &'a mut H: read_utils::FileHandler,
 {
@@ -352,7 +353,8 @@ pub fn read_from_path<P: AsRef<Path>>(p: P, configuration: Configuration) -> Res
 /// identifiers, allowing to namespace the dataset. By default, no
 /// prefix will be added to the identifiers.
 pub fn read_from_zip<P: AsRef<Path>>(path: P, configuration: Configuration) -> Result<Model> {
-    let mut file_handler = read_utils::ZipHandler::new(path)?;
+    let reader = File::open(path.as_ref())?;
+    let mut file_handler = read_utils::ZipHandler::new(reader, path)?;
     read(&mut file_handler, configuration)
 }
 
